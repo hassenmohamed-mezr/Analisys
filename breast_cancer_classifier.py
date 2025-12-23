@@ -9,9 +9,6 @@ import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 
 
-# -------------------------
-# تحميل الصور
-# -------------------------
 def load_images(root="Data", limit=None):
     X, y = [], []
 
@@ -44,7 +41,6 @@ def preprocess_data(X):
     return X
 
 
-# ---------- 3. Train & Evaluate ----------
 def train_and_evaluate(X, y, layers, activation):
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
@@ -67,7 +63,7 @@ def train_and_evaluate(X, y, layers, activation):
     return acc, cm
 
 
-# ---------- 4. Plot Confusion Matrix ----------
+
 def plot_confusion_matrix(cm, title):
     sns.heatmap(cm, annot=True, fmt="d", cmap="Blues")
     plt.title(title)
@@ -76,7 +72,7 @@ def plot_confusion_matrix(cm, title):
     plt.show()
 
 
-    # ---------- 5. Run Experiment ----------
+
 def run_experiment(layers, activation):
     X, y = load_images("Data" , limit=100)
     X = preprocess_data(X)
@@ -92,7 +88,6 @@ def run_experiment(layers, activation):
 
 
 
-# ---------- 6. Experiments ----------
 run_experiment((64,), 'relu')
 run_experiment((128, 64), 'relu')
 
